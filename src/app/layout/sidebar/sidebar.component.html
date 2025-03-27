@@ -1,0 +1,29 @@
+<div class="flex">
+    <!-- Sidebar -->
+    <div
+      class="w-64 min-h-screen bg-gray-800 text-white pt-12 transition-all duration-300 ease-in-out"
+    >
+
+      <ul>
+        <li class="py-2 px-3 hover:bg-gray-700 rounded">Simple Menu 1</li>
+        <li class="py-2 px-3 hover:bg-gray-700 rounded">Simple Menu 2</li>
+  
+        <!-- Dropdown Menu -->
+        <li class="py-2 px-3 relative">
+          <button (click)="toggleDropdown()" class="w-full text-left">
+            Dropdown Menu ⬇
+          </button>
+          <ul
+            *ngIf="isDropdownOpen()"
+            class="absolute left-0 mt-1 w-full bg-gray-700 rounded shadow-md"
+          >
+            <li class="py-2 px-3 hover:bg-gray-600">Dropdown Item 1</li>
+            <li class="py-2 px-3 hover:bg-gray-600">Dropdown Item 2</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  
+   
+  </div>
+  
