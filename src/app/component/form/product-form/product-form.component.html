@@ -1,0 +1,87 @@
+
+<div class="flex items-center justify-center min-h-screen bg-gray-100 ">
+<div class="p-6 border rounded-2xl shadow-md bg-white custom-form-stock">
+    <h2 class="text-2xl font-bold text-center p-2 rounded-xl custom-bg mb-6">
+      Stock Form
+    </h2>
+  
+    <form [formGroup]="stockForm" (ngSubmit)="onSubmit()" class="space-y-5">
+  
+      <!-- Responsive Fieldset Container -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        
+        <!-- General Stock Information -->
+        
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+            <mat-form-field class="custom-input w-full">
+              <mat-label>Name</mat-label>
+              <input matInput formControlName="name">
+            </mat-form-field>
+  
+            <mat-form-field class="custom-input w-full">
+              <mat-label>Unit of Measure</mat-label>
+              <input matInput formControlName="unit_of_measure">
+            </mat-form-field>
+  
+            <mat-form-field class="custom-input w-full">
+              <mat-label>Min Stock Level</mat-label>
+              <input matInput type="number" formControlName="min_stock_level">
+            </mat-form-field>
+  
+            <mat-form-field class="custom-input w-full">
+              <mat-label>Expiry Date</mat-label>
+              <input matInput [matDatepicker]="picker" formControlName="expiry_date">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+     
+  
+        <!-- Batch & Manufacturer -->
+       
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+            <mat-form-field class="custom-input w-full">
+              <mat-label>Batch Number</mat-label>
+              <input matInput formControlName="batch_number">
+            </mat-form-field>
+  
+            <mat-form-field class="custom-input w-full">
+              <mat-label>Manufacturer</mat-label>
+              <input matInput formControlName="manufacturer">
+            </mat-form-field>
+  
+            <mat-form-field class="custom-input w-full">
+              <mat-label>Strength</mat-label>
+              <input matInput formControlName="strength">
+            </mat-form-field>
+  
+            <mat-form-field class="custom-input w-full">
+              <mat-label>Formulation</mat-label>
+              <input matInput formControlName="formulation">
+            </mat-form-field>
+  
+            <mat-form-field class="custom-input w-full">
+              <mat-label>Generic Name</mat-label>
+              <input matInput formControlName="generic_name">
+            </mat-form-field>
+          </div>
+      
+  
+      </div>
+  
+      <!-- Active Status -->
+      <mat-checkbox formControlName="is_active" class="block mt-4">Active</mat-checkbox>
+  
+      <!-- Submit Button -->
+      <button
+        mat-flat-button
+        color="primary"
+        class="w-full bg-orange-500 text-white py-3 rounded-lg text-lg hover:bg-orange-600 transition disabled:bg-gray-400"
+        [disabled]="stockForm.invalid"
+      >
+        Submit
+      </button>
+  
+    </form>
+  </div>
+</div>

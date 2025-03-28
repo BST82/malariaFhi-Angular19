@@ -1,0 +1,82 @@
+<div class="max-w-xl mx-auto p-6 border rounded-2xl shadow-md bg-white custom-form-stock-allocation">
+  <h2 class="text-2xl font-bold text-center p-2 rounded-xl custom-bg mb-6">Stock Allocation Form</h2>
+  <!-- <hr class="mb-10"/> -->
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-5 ">
+    <!-- Name -->
+    <mat-form-field class="custom-input w-full" appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput type="text" formControlName="name" placeholder="Placeholder" />
+      <mat-error *ngIf="form.get('name')?.invalid && form.get('name')?.touched">
+        Name is required.
+      </mat-error>
+    </mat-form-field>
+
+
+
+    <!-- Email -->
+    <mat-form-field class="custom-input w-full">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" formControlName="email" />
+      <mat-error *ngIf="form.get('email')?.invalid && form.get('email')?.touched">
+        Valid email is required.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Phone -->
+    <mat-form-field class="custom-input w-full">
+      <mat-label>Phone</mat-label>
+      <input matInput type="text" formControlName="phone" />
+      <mat-error *ngIf="form.get('phone')?.invalid && form.get('phone')?.touched">
+        Phone number is required.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Address Section -->
+    <fieldset formGroupName="address" class="border p-5 rounded-xl bg-gray-50">
+      <legend class="text-lg font-semibold  px-2">Address</legend>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+        <mat-form-field class="custom-input w-full">
+          <mat-label>Street</mat-label>
+          <input matInput type="text" formControlName="street" />
+          <mat-error *ngIf="form.get('address.street')?.invalid && form.get('address.street')?.touched">
+            Street is required.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="custom-input w-full">
+          <mat-label>City</mat-label>
+          <input matInput type="text" formControlName="city" />
+          <mat-error *ngIf="form.get('address.city')?.invalid && form.get('address.city')?.touched">
+            City is required.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="custom-input w-full md:col-span-2">
+          <mat-label>ZIP Code</mat-label>
+          <input matInput type="text" formControlName="zip" />
+          <mat-error *ngIf="form.get('address.zip')?.invalid && form.get('address.zip')?.touched">
+            ZIP Code is required.
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </fieldset>
+
+    <!-- Submit Button -->
+    <button
+      mat-flat-button
+      color="primary"
+      class="w-full  text-white py-3 rounded-lg text-lg hover:bg-orange-600 transition disabled:bg-gray-400"
+      [disabled]="form.invalid"
+    >
+      Submit
+    </button>
+  </form>
+
+  <!-- Form State Display -->
+  <!-- <div class="mt-4 p-4 border rounded-lg bg-gray-100">
+    <h3 class="text-lg font-semibold">Form State:</h3>
+    <pre>{{ formState$ | async | json }}</pre>
+  </div> -->
+</div>
