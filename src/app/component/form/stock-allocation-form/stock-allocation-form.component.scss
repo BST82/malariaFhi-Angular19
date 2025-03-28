@@ -1,0 +1,12 @@
+.custom-form-stock-allocation{
+    background: linear-gradient(to right, #cfe5ee, #ffffff);
+}
+.custom-bg{
+    background: linear-gradient(to right, #fbae62, #ffa54c,#ffcc99);
+}
+::ng-deep .mat-mdc-text-field-wrapper {
+    border-radius: 12px !important;
+  }
+  :host ::ng-deep .custom-input .mdc-text-field--filled {
+    background-color: transparent !important;
+  }
