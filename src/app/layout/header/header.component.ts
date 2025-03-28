@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { LoginauthService } from '../../service/sharedservice/loginauth.service';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-header',
-  imports: [CommonModule,RouterModule],
+  imports: [CommonModule,RouterModule,MatIconModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
