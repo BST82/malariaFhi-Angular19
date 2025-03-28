@@ -5,20 +5,21 @@
     >
 
       <ul>
-        <li class="py-2 px-3 hover:bg-gray-700 rounded">Simple Menu 1</li>
-        <li class="py-2 px-3 hover:bg-gray-700 rounded">Simple Menu 2</li>
+        <li routerLink="dashboard" class="py-2 px-3 hover:bg-gray-700 rounded">Dashbord</li>
+        <li routerLink="products" class="py-2 px-3 hover:bg-gray-700 rounded">Products</li>
   
         <!-- Dropdown Menu -->
         <li class="py-2 px-3 relative">
           <button (click)="toggleDropdown()" class="w-full text-left">
-            Dropdown Menu ⬇
+            Stock Forms ⬇
           </button>
           <ul
             *ngIf="isDropdownOpen()"
             class="absolute left-0 mt-1 w-full bg-gray-700 rounded shadow-md"
           >
-            <li class="py-2 px-3 hover:bg-gray-600">Dropdown Item 1</li>
-            <li class="py-2 px-3 hover:bg-gray-600">Dropdown Item 2</li>
+            <li routerLink="stockAllocationForm" class="py-2 px-3 hover:bg-gray-600">Stock Allocation</li>
+            <li routerLink="stockTransferForm" class="py-2 px-3 hover:bg-gray-600">Stock Transfer</li>
+            <li routerLink="stockRequestRaisedRequirementForm" class="py-2 px-3 hover:bg-gray-600">Stock Request Raised to Requirement</li>
           </ul>
         </li>
       </ul>
