@@ -1,0 +1,56 @@
+/* Apply a gradient background to the form container */
+.custom-form-stock {
+    background: linear-gradient(to right, #cfe5ee, #ffffff);
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling for the title */
+.custom-bg {
+    background-color: #f2994a;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    border-radius: 12px;
+}
+
+/* Angular Material input styling */
+::ng-deep .mat-mdc-text-field-wrapper {
+    border-radius: 12px !important;
+    padding: 0.5rem !important;
+    border: 1px solid #d1d5db;
+    background-color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+::ng-deep .mat-mdc-text-field-wrapper:hover {
+    border-color: #f2994a;
+}
+
+/* Remove background from Angular Material inputs */
+:host ::ng-deep .custom-input .mdc-text-field--filled {
+    background-color: transparent !important;
+}
+
+/* Mat-checkbox styling */
+::ng-deep .mat-mdc-checkbox .mdc-form-field {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* Button styling */
+.submit-btn {
+    width: 100%;
+    color: white;
+    padding: 0.75rem;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    transition: background 0.3s ease;
+}
+
+
+.submit-btn:disabled {
+    background-color: #d1d5db;
+    cursor: not-allowed;
+}

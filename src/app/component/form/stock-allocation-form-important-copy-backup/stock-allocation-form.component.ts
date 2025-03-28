@@ -11,15 +11,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';  // ✅ Added
 import { MatButtonModule } from '@angular/material/button'; // ✅ Added
 
-
 @Component({
-  selector: 'app-stock-transfer-form',
+  selector: 'app-stock-allocation-form',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule], // ✅ Fixed
-  templateUrl: './stock-transfer-form.component.html',
-  styleUrl: './stock-transfer-form.component.scss'
+  templateUrl: './stock-allocation-form.component.html',
+  styleUrl: './stock-allocation-form.component.scss'
 })
-export class StockTransferFormComponent implements OnInit {
+export class StockAllocationFormComponent implements OnInit {
   form!: FormGroup;
   formState$!: Observable<any>;
 

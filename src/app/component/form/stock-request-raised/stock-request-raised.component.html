@@ -1,1 +1,111 @@
-<p>stock-request-raised works!</p>
+<div class="max-w-xl mx-auto p-6 border rounded-2xl shadow-md bg-white custom-form-stock-allocation">
+  <h2 class="text-2xl font-bold text-center p-2 rounded-xl custom-bg mb-6">
+    Stock Request Raised to Requirement Form
+  </h2>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-5">
+
+      <!-- Location Section -->
+      <fieldset formGroupName="address" class="border p-5 rounded-xl bg-gray-50">
+        <legend class="text-lg px-2">The request is being raised from this location</legend>
+  
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+          <mat-form-field class="custom-input w-full">
+            <mat-label>State</mat-label>
+            <input matInput type="text" formControlName="state" />
+            <mat-error *ngIf="form.get('address.state')?.invalid && form.get('address.state')?.touched">
+              State is required.
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field class="custom-input w-full">
+            <mat-label>District</mat-label>
+            <input matInput type="text" formControlName="district" />
+            <mat-error *ngIf="form.get('address.district')?.invalid && form.get('address.district')?.touched">
+              District is required.
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field class="custom-input w-full">
+            <mat-label>Block</mat-label>
+            <input matInput type="text" formControlName="block" />
+            <mat-error *ngIf="form.get('address.block')?.invalid && form.get('address.block')?.touched">
+              Block is required.
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field class="custom-input w-full">
+            <mat-label>CHC</mat-label>
+            <input matInput type="text" formControlName="chc" />
+            <mat-error *ngIf="form.get('address.chc')?.invalid && form.get('address.chc')?.touched">
+              CHC is required.
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field class="custom-input w-full">
+            <mat-label>PHC</mat-label>
+            <input matInput type="text" formControlName="phc" />
+            <mat-error *ngIf="form.get('address.phc')?.invalid && form.get('address.phc')?.touched">
+              PHC is required.
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field class="custom-input w-full">
+            <mat-label>SHC</mat-label>
+            <input matInput type="text" formControlName="shc" />
+            <mat-error *ngIf="form.get('address.shc')?.invalid && form.get('address.shc')?.touched">
+              SHC is required.
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </fieldset>
+
+    <!-- Medicine Select -->
+<mat-form-field class="custom-input w-full" appearance="fill">
+  <mat-label>Medicine Select</mat-label>
+  <mat-select formControlName="medicine" multiple>
+    <mat-option *ngFor="let med of medicines" [value]="med">
+      {{ med }}
+    </mat-option>
+  </mat-select>
+  <mat-error *ngIf="form.get('medicine')?.invalid && form.get('medicine')?.touched">
+    Please select at least one medicine.
+  </mat-error>
+</mat-form-field>
+
+
+   <!-- Date of Request -->
+<mat-form-field class="custom-input w-full" appearance="fill">
+  <mat-label>Date of Request</mat-label>
+  <input matInput [matDatepicker]="picker" formControlName="dateOfRequest" />
+  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+  <mat-error *ngIf="form.get('dateOfRequest')?.invalid && form.get('dateOfRequest')?.touched">
+    Date is required.
+  </mat-error>
+</mat-form-field>
+
+<!-- Quantity Input -->
+<mat-form-field class="custom-input w-full" appearance="fill">
+  <mat-label>Quantity</mat-label>
+  <input matInput type="number" formControlName="quantity" min="1" />
+  <mat-error *ngIf="form.get('quantity')?.invalid && form.get('quantity')?.touched">
+    Please enter a valid quantity.
+  </mat-error>
+</mat-form-field>
+
+
+
+    <!-- Submit Button -->
+    <button
+      mat-flat-button
+      color="primary"
+      class="w-full bg-orange-500 text-white py-3 rounded-lg text-lg hover:bg-orange-600 transition disabled:bg-gray-400"
+      [disabled]="form.invalid"
+    >
+      Submit
+    </button>
+  </form>
+</div>
+
+<app-stock-request-raised-table />

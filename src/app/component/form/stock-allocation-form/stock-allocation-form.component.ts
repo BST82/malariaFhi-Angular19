@@ -7,14 +7,33 @@ import { createFormData } from '../../../store/formstore/stock-allocation-form-s
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import Swal from 'sweetalert2';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';  // ✅ Added
-import { MatButtonModule } from '@angular/material/button'; // ✅ Added
 
+// ✅ Angular Material Modules
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select'; // ✅ Added
+import { MatOptionModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+
+// ✅ Child Component
+import { StockRequestRaisedTableComponent } from "../../table/stock-request-raised-table/stock-request-raised-table.component";
 @Component({
   selector: 'app-stock-allocation-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule], // ✅ Fixed
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule, // ✅ Added
+    MatOptionModule, // ✅ Added
+    StockRequestRaisedTableComponent,
+    MatNativeDateModule,
+    MatDatepickerModule
+  ], // ✅ Fixed
   templateUrl: './stock-allocation-form.component.html',
   styleUrl: './stock-allocation-form.component.scss'
 })
@@ -25,18 +44,24 @@ export class StockAllocationFormComponent implements OnInit {
   private fb = inject(FormBuilder);
   private store = inject(Store);
 
+  // ✅ Sample Medicine Data
+  medicines: string[] = ['Paracetamol', 'Ibuprofen', 'Amoxicillin', 'Cetirizine', 'Aspirin'];
+
   constructor() {}
 
   ngOnInit() {
     this.form = this.fb.group({
-      name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      phone: ['', Validators.required],
       address: this.fb.group({
-        street: ['', Validators.required],
-        city: ['', Validators.required],
-        zip: ['', Validators.required],
+        state: ['', Validators.required],
+        district: ['', Validators.required],
+        block: ['', Validators.required],
+        chc: ['', Validators.required],
+        phc: ['', Validators.required],
+        shc: ['', Validators.required]
       }),
+      medicine: ['', Validators.required],
+      dateOfRequest: ['', Validators.required], // ✅ Added Date field
+      quantity: ['', [Validators.required, Validators.min(1)]] // ✅ Added Quantity field
     });
 
     // Select the state from NgRx Store
